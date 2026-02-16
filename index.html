@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SeptemberAI - Intelligent Model Router</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Watermark -->
+    <div class="watermark">SeptemberAI</div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1>AI Models</h1>
+                <p class="subtitle">Intelligent Router</p>
+            </div>
+
+            <div class="models-section">
+                <h3>Available Models</h3>
+                
+                <div class="model-card" data-model="chatgpt-5.2">
+                    <div class="model-header">
+                        <span class="model-name">ChatGPT-5.2</span>
+                    </div>
+                    <p class="model-desc">Documentation, tutorials, content writing, explanations</p>
+                    <div class="model-tags">
+                        <span class="tag">Documentation</span>
+                        <span class="tag">Writing</span>
+                    </div>
+                </div>
+
+                <div class="model-card" data-model="claude-opus">
+                    <div class="model-header">
+                        <span class="model-name">Claude Opus</span>
+                    </div>
+                    <p class="model-desc">Research, deep analysis, data insights, strategic planning</p>
+                    <div class="model-tags">
+                        <span class="tag">Research</span>
+                        <span class="tag">Analysis</span>
+                    </div>
+                </div>
+
+                <div class="model-card" data-model="claude-sonnet">
+                    <div class="model-header">
+                        <span class="model-name">Claude Sonnet</span>
+                    </div>
+                    <p class="model-desc">Coding, web development, debugging, software architecture</p>
+                    <div class="model-tags">
+                        <span class="tag">Coding</span>
+                        <span class="tag">Web Dev</span>
+                    </div>
+                </div>
+
+                <div class="model-card" data-model="claude-haiku">
+                    <div class="model-header">
+                        <span class="model-name">Claude Haiku</span>
+                    </div>
+                    <p class="model-desc">Quick answers, summaries, simple questions, fast responses</p>
+                    <div class="model-tags">
+                        <span class="tag">Fast</span>
+                        <span class="tag">Simple</span>
+                    </div>
+                </div>
+
+                <div class="model-card" data-model="gemini-pro">
+                    <div class="model-header">
+                        <span class="model-name">Gemini Pro</span>
+                    </div>
+                    <p class="model-desc">Long documents, technical specs, 2M token context</p>
+                    <div class="model-tags">
+                        <span class="tag">Long Context</span>
+                        <span class="tag">Tech Docs</span>
+                    </div>
+                </div>
+
+                <div class="model-card" data-model="gemini-flash">
+                    <div class="model-header">
+                        <span class="model-name">Gemini Flash</span>
+                    </div>
+                    <p class="model-desc">General chat, real-time responses, natural conversations</p>
+                    <div class="model-tags">
+                        <span class="tag">Chat</span>
+                        <span class="tag">Real-time</span>
+                    </div>
+                </div>
+
+                <div class="model-card" data-model="gemini-nano">
+                    <div class="model-header">
+                        <span class="model-name">Gemini Nano</span>
+                    </div>
+                    <p class="model-desc">Image generation, visual design, UI/UX ideas, graphics</p>
+                    <div class="model-tags">
+                        <span class="tag">Images</span>
+                        <span class="tag">Design</span>
+                    </div>
+                </div>
+
+                <div class="model-card" data-model="perplexity">
+                    <div class="model-header">
+                        <span class="model-name">Perplexity</span>
+                    </div>
+                    <p class="model-desc">Real-time web search, current events, latest information with citations</p>
+                    <div class="model-tags">
+                        <span class="tag">Web Search</span>
+                        <span class="tag">Current Info</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="routing-info">
+                <h3>Smart Routing</h3>
+                <p>Our system automatically selects the best model based on your query type, complexity, and requirements.</p>
+                <div class="routing-steps">
+                    <div class="routing-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Task Detection</h4>
+                            <p>Analyzes query patterns to identify task type</p>
+                        </div>
+                    </div>
+                    <div class="routing-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Model Selection</h4>
+                            <p>Matches task with specialized model capabilities</p>
+                        </div>
+                    </div>
+                    <div class="routing-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Intelligent Routing</h4>
+                            <p>Routes your query to the optimal AI model</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Chat Area -->
+        <main class="chat-container">
+            <div class="chat-header">
+                <h2>Intelligent AI Assistant</h2>
+                <div class="current-model">
+                    <span class="status-dot"></span>
+                    <span id="selectedModel">Ready to assist</span>
+                </div>
+            </div>
+
+            <div class="chat-messages" id="chatMessages">
+                <div class="welcome-message">
+                    <h2>Welcome to SeptemberAI</h2>
+                    <p>Ask me anything and I'll automatically route your query to the most suitable AI model.</p>
+                    
+                    <div class="example-queries">
+                        <h3>Try these examples:</h3>
+                        <div class="example-grid">
+                            <button class="example-btn" data-query="Write a README.md file for a todo app">
+                                <span>Documentation</span>
+                            </button>
+                            <button class="example-btn" data-query="Debug this React component that's not rendering properly">
+                                <span>Code Debugging</span>
+                            </button>
+                            <button class="example-btn" data-query="Research the impact of AI on healthcare industry">
+                                <span>Research</span>
+                            </button>
+                            <button class="example-btn" data-query="Generate an image of a futuristic city at sunset">
+                                <span>Image Generation</span>
+                            </button>
+                            <button class="example-btn" data-query="What is machine learning?">
+                                <span>Quick Question</span>
+                            </button>
+                            <button class="example-btn" data-query="Hey, can you help me with something?">
+                                <span>General Chat</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-input-container">
+                <div class="input-wrapper">
+                    <textarea 
+                        id="userInput" 
+                        placeholder="Type your message here... I'll route it to the best AI model"
+                        rows="1"
+                    ></textarea>
+                    <button id="sendBtn" class="send-btn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M22 2L11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="api-client.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
