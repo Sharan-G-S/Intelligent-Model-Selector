@@ -157,10 +157,8 @@ System-Model/
 
 **Traditional approach:** User picks a model → May choose wrong one → Poor results
 
-**SeptemberAI approach:** System analyzes query → Picks best model → Optimal results
+**Our approach:** System analyzes query → Picks best model → Optimal results
 
 This ensures you always get the best answer from the most suitable AI model for your specific question.
 
-## Support
 
-For questions or issues, the system automatically routes your query to the appropriate model that can help best!
