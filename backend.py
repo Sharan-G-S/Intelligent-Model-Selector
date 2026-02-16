@@ -170,11 +170,11 @@ class AIManager:
         try:
             if config.GROQ_API_KEY:
                 self.groq_client = Groq(api_key=config.GROQ_API_KEY)
-                logger.info("✅ Groq client initialized successfully")
+                logger.info("Groq client initialized successfully")
             else:
-                logger.error("❌ Groq API key not configured")
+                logger.error("Groq API key not configured")
         except Exception as e:
-            logger.error(f"❌ Error initializing clients: {str(e)}")
+            logger.error(f"Error initializing clients: {str(e)}")
     
     async def chat_groq(self, request: ChatRequest) -> str:
         """Unified Groq API chat for all models"""
@@ -215,12 +215,12 @@ class AIManager:
             return response.choices[0].message.content
         
         except Exception as e:
-            logger.error(f"❌ Groq API error: {str(e)}")
+            logger.error(f"Groq API error: {str(e)}")
             raise HTTPException(status_code=500, detail=f"Groq error: {str(e)}")
     
     async def chat(self, request: ChatRequest) -> str:
         """Main chat router - uses Groq for all models"""
-        logger.info(f"💬 Using Groq for model: {request.model}")
+        logger.info(f"Using Groq for model: {request.model}")
         return await self.chat_groq(request)
 
 ai_manager = AIManager()
@@ -316,7 +316,7 @@ async def chat(request: ChatRequest, req: Request):
         )
     
     # Get AI response through Groq
-    logger.info(f"📨 Processing request - Model: {request.model}, IP: {client_ip}")
+    logger.info(f"Processing request - Model: {request.model}, IP: {client_ip}")
     
     try:
         response_text = await ai_manager.chat(request)
@@ -324,7 +324,7 @@ async def chat(request: ChatRequest, req: Request):
         # Cache the response
         cache.set(cache_key, response_text)
         
-        logger.info(f"✅ Response generated successfully for model: {request.model}")
+        logger.info(f"Response generated successfully for model: {request.model}")
         
         return ChatResponse(
             response=response_text,
@@ -334,7 +334,7 @@ async def chat(request: ChatRequest, req: Request):
         )
     
     except Exception as e:
-        logger.error(f"❌ Error processing request: {str(e)}")
+        logger.error(f"Error processing request: {str(e)}")
         raise
 
 @app.get("/api/models")
@@ -423,7 +423,7 @@ async def get_models():
 
 if __name__ == "__main__":
     import uvicorn
-    print("🚀 Starting SeptemberAI with Groq API...")
-    print(f"🔑 Groq API Key: {'✅ Configured' if config.GROQ_API_KEY else '❌ Missing'}")
-    print(f"📊 All Models: Powered by Groq (Llama 3.3 70B)")
+    print("Starting SeptemberAI with Groq API...")
+    print(f"Groq API Key: {'Configured' if config.GROQ_API_KEY else 'Missing'}")
+    print(f"All Models: Powered by Groq (Llama 3.3 70B)")
     uvicorn.run(app, host="0.0.0.0", port=8000)
